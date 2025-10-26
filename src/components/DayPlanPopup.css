@@ -1,0 +1,120 @@
+.day-plan-popup {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 350px;
+  max-height: calc(100vh - 100px);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1002;
+  overflow-y: auto;
+  backdrop-filter: blur(6px);
+  color: #333;
+}
+
+.day-plan-popup h3, .day-plan-popup h4 {
+  margin-top: 0;
+  color: #222;
+}
+
+.day-plan-popup .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+.day-plan-popup .plan-details {
+  margin-top: 15px;
+}
+
+.day-plan-popup .plan-item {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #eee;
+}
+
+.day-plan-popup .plan-item:last-child {
+  border-bottom: none;
+}
+
+.day-plan-popup .travel-segment, .day-plan-popup .activity-segment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.day-plan-popup .travel-icon, .day-plan-popup .activity-icon {
+  font-size: 20px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  color: #555;
+}
+
+.day-plan-popup p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.day-plan-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100%;
+  background: rgba(255,255,255,0.95);
+  color: #333;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  font-family: 'Arial', sans-serif;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.plan-step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.plan-step .icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.plan-step.transport {
+  background: #f0f8ff;
+  padding: 5px 10px;
+  border-left: 4px solid #1E90FF;
+  border-radius: 3px;
+}
+.plan-step.transport p {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.plan-step p {
+  margin: 2px 0 0 0;
+  font-size: 14px;
+  color: #555;
+}
