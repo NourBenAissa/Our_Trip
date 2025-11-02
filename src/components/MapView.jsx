@@ -50,11 +50,17 @@ const placesData = [
   { id: "ortakoy", lat: 41.047537, lon: 29.025775, title: "Ortakoy square", category: "shops", html: "Ortakoy district — shops, cafes, and the famous mosque. KAMPIR / KES GHALA", icon: makeEmojiIcon("📍") },
   // --- SPECIAL: Eminönü ---
   { id: "eminonu", lat: 41.0172, lon: 28.9711, title: "Eminönü (ferry & bazaars)", category: "bazaars", html: "Eminönü ferry hub, Spice Bazaar, access to Old City.", icon: makeEmojiIcon("📍") },
-
+ { id: "shaba", lat: 41.030139, lon: 28.949909, title: "Colorful Stairs /umbrellas", category: "bazaars", html: "s7ayeb mlawna.", icon: makeEmojiIcon("📸") },
+ { id: "buil", lat: 41.029578, lon: 28.949091, title: "Colorful buildings", category: "bazaars", html: "s7ayeb mlawna.", icon: makeEmojiIcon("📸") },
+ { id: "shabaf", lat:41.024624, lon: 28.978342, title: "Umbrella Street (fake)", category: "bazaars", html: "s7ayeb mlawna.", icon: makeEmojiIcon("📸") },
+ { id: "shabaf", lat:41.023897, lon: 28.973675, title: "Escaliers Camondo ", category: "bazaars", html: "(drouj mezyen).", icon: makeEmojiIcon("📸") },
+ { id: "shabaf", lat:41.025528, lon: 28.974139, title: "Galata port ", category: "bazaars", html: "(drouj mezyen).", icon: makeEmojiIcon("📸") },
   // --- Kadıköy & Asian Side ---
   { id: "kadikoy_cilek_sokak", lat: 40.990415, lon: 29.030519, title: "Kadıköy - Çilek Sokak (Çilek Street)", category: "shops", html: "Cheap street shopping, many small boutiques. Near Söğütlüçeşme metro." },
   { id: "bahariye_street", lat: 40.990194, lon: 29.029016, title: "Bahariye Street (Kadıköy)", category: "shops", html: "Bahariye shopping & cafes." },
   { id: "tepe_nautilus_mall", lat: 40.998965, lon: 29.030959, title: "Tepe Nautilus Mall (Ayrılıkçeşmesi)", category: "malls", html: "Tepe Nautilus shopping mall." },
+  { id: "historia_shopping", lat: 41.014088, lon: 28.944962, title: "Historia Shopping", category: "malls", html: "Historia shopping mall." },
+  { id: "merter", lat: 41.009022, lon: 28.886885, title: "Merter (Textile District)", category: "shops", html: " Maaredh Merter district — textile wholesalers, shops." },
   { id: "akasya_avm", lat: 41.002142, lon: 29.054086, title: "Akasya AVM MALL(Acıbadem / Üsküdar area)", category: "malls", html: "Akasya shopping mall (Asian side)." },
   { id: "mi_so", lat: 40.9918, lon: 29.0259, title: "Mi&So (Kadıköy mention)", category: "shops", html: "Local shop mentioned: Mi&So." },
   { id: "vadis", lat: 41.107356, lon: 28.986055, title: "Vadistanbul Mall", category: "malls", html: "Vadistanbul shopping mall." },
@@ -69,7 +75,7 @@ const placesData = [
 
   // --- Bakırköy / Olivium / Büyük Bakırköy Pazarı ---
   { id: "bakirkoy", lat: 40.980921, lon: 28.875748, title: "Bakırköy ", category: "shops", html: "Bakırköy district — shopping area, restaurants, cafes.", icon: makeEmojiIcon("📍") },
-  { id: "olivium_outlet", lat: 40.995556, lon: 28.908877, title: "Olivium Outlet (Zeytinburnu)", category: "malls", html: "Olivium Outlet Center." },
+  { id: "olivium_outlet", lat: 40.995556, lon: 28.908877, title: "Olivium Outlet (Zeytinburnu)", category: "malls", html: "Olivium Outlet Center. bus 93t taksim direct mall " },
  { id: "marmara_forum", lat: 40.996757, lon: 28.887341, title: "Marmara Forum Mall", category: "malls", html: "Marmara Forum Mall." },
   // --- Florya / Wednesday Pazar Florya ---
   { id: "florya_wednesday_pazar", lat: 40.9806, lon: 28.7817, title: "Florya — Wednesday Pazar", category: "bazaars", html: "Weekly market in Florya area." },
@@ -125,7 +131,8 @@ const placesData = [
   // --- Additional specific shops & local mentions that were in the list but ambiguous: put neighborhood markers for them ---
   { id: "sinanpasa_central_mall", lat: 41.0438, lon: 29.0049, title: "Sinanpaşa / central mall (low prices)", category: "malls", html: "Sinanpaşa mall area (low-price shopping)." },
   { id: "dcollection_avcilar", lat: 40.9881, lon: 28.7096, title: "DCollection (Avcılar) - shop", category: "shops", html: "DCollection (Avcılar) - grouped marker." },
-  { id: "fatih_carsamba_pazari", lat: 41.020993, lon: 28.952551, title: "Fatih Pazarı (Wednesday Market)", category: "bazaars", html: "Istanbul's largest weekly outdoor market for produce, textiles, and goods (Wednesdays only)."}
+  { id: "fatih_carsamba_pazari", lat: 41.020993, lon: 28.952551, title: "Fatih Pazarı (Wednesday Market)", category: "bazaars", html: "Istanbul's largest weekly outdoor market for produce, textiles, and goods (Wednesdays only)." },
+  { id: "kaya", lat: 40.989482, lon: 29.032010, title: "Cetinkaya (Kadıköy)", category: "shops", html: "Cetinkaya (Kadıköy) - ar5es fi kadikoy." },
   // --- Full raw items from the list, grouped ---
   
 ];
@@ -135,58 +142,46 @@ const placesData = [
 const getPlaceById = (id) => placesData.find(p => p.id === id);
 
 // --- ITINERARY DATA ---
-const HOTEL_LOCATION = { id: "hotel_taksim", coords: [41.0369, 28.9860], title: "Your Hotel (Taksim Square)" }; // Your 'home' icon location
+const HOTEL_LOCATION = { id: "taksim_square", coords: [41.0369, 28.9860], title: "Your Hotel (Taksim Square)" }; // Your 'home' icon location
 
 
 const itineraries = [
-{
+  {
     day: 1,
-    date: "3 Novembre",
-    name: "Arrivée & Exploration de Taksim/Beyoğlu",
+    date: "Mon 3 Nov",
+    name: "Laleli + Aksaray + historiya mall",
     plan: [
       {
         placeId: HOTEL_LOCATION.id,
         activity: "Arrivée à l'hôtel (Taksim) & Enregistrement",
-        // Pas de travelTo ici car c'est le point de départ de la journée après l'arrivée
         coords: HOTEL_LOCATION.coords,
         durationHrs: 1.0 // Durée estimée pour l'enregistrement et s'installer
       },
-     
-      {
-        placeId: "istiklal_caddesi", // Istiklal Caddesi est très proche de Taksim Square
-        activity: "Flânerie sur Istiklal Caddesi",
-        durationHrs: 2.0,
+       {
+        placeId: "laleli",
+        activity: "Shopping à Laleli",
+        durationHrs: 6.0, // Dedicate the day to Laleli
         travelTo: {
-          mode: "Marche",
-          details: "Marche de la Place Taksim le long de la rue Istiklal.",
-          durationMin: 5
+          mode: "Métro M2 + Tram T1",
+          details: "M2 de Taksim à Vezneciler, puis Tram T1 à Laleli.",
+          durationMin: 20
         }
       },
-      {
-        placeId: "merzezi", // Beyoğlu İş Merkezi
-        activity: "Visite du Beyoğlu İş Merkezi",
-        durationHrs: 1.0,
-        travelTo: {
-          mode: "Marche",
-          details: "Continuer la marche sur Istiklal Caddesi jusqu'au Beyoğlu İş Merkezi (près d'Yves Rocher).",
-          durationMin: 10
-        }
-      },
-      {
-        placeId: HOTEL_LOCATION.id,
+       {
+        placeId: "taksim_square",
         activity: "Retour à l'hôtel (Taksim)",
         travelTo: {
-          mode: "Marche",
-          details: "Marche de Beyoğlu İş Merkezi jusqu'à l'hôtel à Taksim.",
-          durationMin: 15
+          mode: "Tram T1 + Métro M2",
+          details: "T1 de Laleli à Vezneciler, puis M2 à Taksim.",
+          durationMin: 20
         }
       }
     ]
   },
-{
+  {
     day: 2,
-    date: "4 Novembre",
-    name: "Aventure au Bazaar de Kadıköy & Centre Commercial Emaar",
+    date: "Tue 4 Nov",
+    name: "Kadikoy + cilek sokak + Akasya mall",
     plan: [
       {
         placeId: HOTEL_LOCATION.id,
@@ -194,23 +189,33 @@ const itineraries = [
         coords: HOTEL_LOCATION.coords
       },
       {
-        placeId: "kadikoy_bazaar_note",
-        activity: "Shopping matinal au Bazaar de Kadıköy",
-        durationHrs: 2.5,
+        placeId: "kadikoy_bazaar_note", // Represents the general Kadikoy Bazaar area
+        activity: "Shopping au Bazaar de Kadıköy",
+        durationHrs: 3.0,
         travelTo: {
-          mode: "Funiculaire + Ferry + Marche",
-          details: "Marcher ~5 min de l'hôtel à la station de Funiculaire Taksim (ligne F1) → Prendre le Funiculaire F1 jusqu'à Kabataş (3-4 min) → Marcher ~5 min jusqu'au Terminal de Ferry/Seabus de Kabataş → Prendre un ferry en direction de Kadıköy (ex: İDO ou Şehir Hatları) jusqu'au Quai de Kadıköy (20-25 min) → Marcher ~10-15 min jusqu'à la zone du Bazaar de Kadıköy.",
-          durationMin: 45
+          mode: "Funiculaire F1 + Ferry",
+          details: "F1 de Taksim à Kabataş, puis Ferry vers Kadıköy.",
+          durationMin: 40
         }
       },
       {
-        placeId: "emaar_mall",
-        activity: "Shopping l'après-midi au Centre Commercial Emaar",
-        durationHrs: 3,
+        placeId: "kadikoy_cilek_sokak",
+        activity: "Exploration de Çilek Sokak & Bahariye Street",
+        durationHrs: 3.0,
         travelTo: {
-          mode: "Métro + Marche",
-          details: "Marcher ~15 min du Bazaar de Kadıköy à la station de Métro Kadıköy (ligne M4) → Prendre le Métro M4 en direction de Sabiha Gökçen Havalimanı jusqu'à la station Ünalan (env. 3 arrêts, 5-7 min de trajet) → Le Centre Commercial Emaar est directement connecté à la station de Métro Ünalan via un passage souterrain. Suivre les panneaux pour Emaar Square.",
-          durationMin: 25
+          mode: "Marche",
+          details: "Marche depuis le bazaar de Kadıköy.",
+          durationMin: 10
+        }
+      },
+      {
+        placeId: "kaya", // Cetinkaya (Kadıköy)
+        activity: "Visite de Cetinkaya (Kadıköy) et autres boutiques locales",
+        durationHrs: 2.0,
+        travelTo: {
+          mode: "Marche",
+          details: "Marche autour de Kadıköy.",
+          durationMin: 5
         }
       },
       {
@@ -218,7 +223,7 @@ const itineraries = [
         activity: "Retour à l'hôtel (Taksim)",
         travelTo: {
           mode: "Métro + Marmaray + Métro + Funiculaire + Marche",
-          details: "Depuis le Centre Commercial Emaar (station de Métro Ünalan) prendre le Métro M4 en direction de Kadıköy jusqu'à la station Ayrılık Çeşmesi (1 arrêt, ~2 min de trajet) → Changer pour la ligne Marmaray en direction de Halkalı jusqu'à la station Yenikapı (2 arrêts, 5-7 min de trajet) → Changer pour le Métro M2 en direction de Hacıosman jusqu'à la station Taksim (4 arrêts, ~10 min de trajet) → Marcher ~5 min jusqu'à l'hôtel.",
+          details: "D'Emaar Mall (Ünalan), M4 à Ayrılık Çeşmesi, Marmaray à Yenikapı, M2 à Taksim, puis marche.",
           durationMin: 35
         }
       }
@@ -226,20 +231,277 @@ const itineraries = [
   },
   {
     day: 3,
-    date: "November 5th",
-    name: "Asian Side Exploration (Kadıköy)",
+    date: "wed  5 Nov",
+    name: " Fatih + Beshiktach",
     plan: [
-      { placeId: HOTEL_LOCATION.id, activity: "Start from Hotel", coords: HOTEL_LOCATION.coords },
-      { placeId: "kadikoy_cilek_sokak", activity: "Street shopping in Çilek Sokak.", durationHrs: 2.5, travelTo: { mode: "ferry", details: "Ferry from Kabataş (via F1 funicular from Taksim) to Kadıköy.", durationMin: 40 } },
-      { placeId: "kadikoy_bazaar", activity: "Explore the local market and fresh produce.", durationHrs: 1.5, travelTo: { mode: "walk", details: "Walk from Çilek Sokak.", durationMin: 10 } },
-      { placeId: "bahariye_street", activity: "Coffee and stroll on Bahariye Street.", durationHrs: 1.5, travelTo: { mode: "walk", details: "Walk from Kadıköy Bazaar.", durationMin: 5 } },
-      { placeId: "akasya_avm", activity: "Modern shopping mall experience.", durationHrs: 2.0, travelTo: { mode: "metro", details: "M4 from Kadıköy to Acıbadem (for Akasya AVM).", durationMin: 15 } },
-      { placeId: HOTEL_LOCATION.id, activity: "Return to Hotel.", travelTo: { mode: "metro_ferry", details: "M4 from Acıbadem to Kadıköy, then ferry to Kabataş, F1 to Taksim.", durationMin: 50 } }
+      { placeId: HOTEL_LOCATION.id, activity: "Départ de l'hôtel (Taksim)", coords: HOTEL_LOCATION.coords },
+       {
+        placeId: "fatih_carsamba_pazari",
+        activity: "Exploration du Marché de Fatih (Çarşamba Pazarı)",
+        durationHrs: 4.0,
+        travelTo: {
+          mode: "Métro M2 + Tram T1",
+          details: "M2 de Taksim à Vezneciler, puis Tram T1 jusqu'à Fatih (arrêt Pazartekke).",
+          durationMin: 35
+        }
+      },
+      {
+        placeId: "sinanpasa_central_mall", // Sinanpaşa / central mall (low prices)
+        activity: "Shopping en soirée à Sinanpaşa (Beşiktaş)",
+        durationHrs: 3.0,
+        travelTo: {
+          mode: "Tram T1 + Bus",
+          details: "T1 de Fatih à Eminönü, puis bus 28, 28T, 26, 26A, 26B vers Beşiktaş İskele.",
+          durationMin: 45
+        }
+      },
+      { placeId: HOTEL_LOCATION.id, activity: "Retour à l'hôtel (Taksim)", travelTo: { mode: "Tram + Métro", details: "De Fatih, tramway puis métro M2 jusqu'à Taksim.", durationMin: 30 } }
     ]
   },
-  // Add more days for November 3rd to 14th here following the same structure
+  {
+    day: 4,
+    date: "Thu 6 Nov",
+    name: "Bakırköy + Aqua Florya",
+    plan: [
+      { placeId: HOTEL_LOCATION.id, activity: "Départ de l'hôtel (Taksim)", coords: HOTEL_LOCATION.coords },
+      {
+        placeId: "weekly_bazaars_markets", // Bakirkoy baazar
+        activity: "Visite du Bakırköy Pazarı",
+        durationHrs: 3.0,
+        travelTo: {
+          mode: "Métro M2 + Marmaray",
+          details: "M2 de Taksim à Yenikapı, puis Marmaray à Bakırköy.",
+          durationMin: 40
+        }
+      },
+      {
+        placeId: "aqua_florya_mall",
+        activity: "Shopping et détente à Aqua Florya Mall",
+        durationHrs: 4.0,
+        travelTo: {
+          mode: "Bus 73Y / Taxi",
+          details: "De Bakırköy, bus 73Y ou un court trajet en taxi jusqu'à Aqua Florya.",
+          durationMin: 20
+        }
+      },
+      { placeId: HOTEL_LOCATION.id, activity: "Retour à l'hôtel (Taksim)", travelTo: { mode: "Bus + Métro + Marmaray", details: "D'Aqua Florya, bus vers une station Marmaray/Métro proche (ex: Florya), puis retour via Marmaray et M2 à Taksim.", durationMin: 60 } }
+    ]
+  },
+  {
+    day: 5,
+    date: "Fri 7 Nov",
+    name: "Merter + kale outlet",
+    plan: [
+      { placeId: HOTEL_LOCATION.id, activity: "Départ de l'hôtel (Taksim)", coords: HOTEL_LOCATION.coords },
+      {
+        placeId: "merter",
+        activity: "Shopping dans le quartier textile de Merter",
+        durationHrs: 3.0,
+        travelTo: {
+          mode: "Métro M2 + Métro M1A",
+          details: "M2 de Taksim à Yenikapı, puis M1A à Merter.",
+          durationMin: 30
+        }
+      },
+      {
+        placeId: "kale_outlet_center",
+        activity: "Shopping au Kale Outlet Center",
+        durationHrs: 3.0,
+        travelTo: {
+          mode: "Métro M1A + Marche",
+          details: "M1A de Merter à Güngören/Akıncılar, puis courte marche. Ou taxi direct.",
+          durationMin: 15
+        }
+      },
+      { placeId: HOTEL_LOCATION.id, activity: "Retour à l'hôtel (Taksim)", travelTo: { mode: "Tram + Métro", details: "De Venezia, Tramway T4 à Topkapı, puis M2 à Taksim.", durationMin: 50 } }
+    ]
+  },
+  {
+    day: 6,
+    date: "Sat 8 Nov",
+    name: "Venezia + Sinanpaşa",
+    plan: [
+      { placeId: HOTEL_LOCATION.id, activity: "Journée libre à Istanbul", html: "Profitez de cette journée pour vous détendre ou explorer à votre guise." },
+     {
+        placeId: "venezia_mega_outlet",
+        activity: "Shopping toute la journée au Venezia Mega Outlet",
+        durationHrs: 6.0,
+        travelTo: {
+          mode: "Métro M2 + Tram T4",
+          details: "M2 de Taksim à Topkapı-Ulubatlı, puis Tram T4 à Kiptaş-Venezia (centre commercial attenant).",
+          durationMin: 50
+        }
+      },
+      {
+        placeId: "taksim_square",
+        activity: "Retour à l'hôtel (Taksim)",
+        travelTo: {
+          mode: "Tram T4 + Métro M2",
+          details: "T4 de Kiptaş-Venezia à Topkapı-Ulubatlı, puis M2 à Taksim.",
+          durationMin: 50
+        }
+      }
+    ]
+  },
+  {
+    day: 7,
+    date: "Sun 9 Nov",
+    name: "212 outlet ",
+    plan: [
+      { placeId: HOTEL_LOCATION.id, activity: "Journée libre à Istanbul", html: "Profitez de cette journée pour vous détendre ou explorer à votre guise." }
+    ,
+      {
+        placeId: "outlet_212",
+        activity: "Shopping toute la journée à l'Outlet 212",
+        durationHrs: 6.0,
+        travelTo: {
+          mode: "Métro M2 + Métro M7 + Bus",
+          details: "M2 de Taksim à Mecidiyeköy, M7 à Mahmutbey, puis bus (ex: HT1) ou taxi jusqu'à Outlet 212.",
+          durationMin: 60
+        }
+      },
+      {
+        placeId: "taksim_square",
+        activity: "Retour à l'hôtel (Taksim)",
+        travelTo: {
+          mode: "Bus + Métro M7 + Métro M2",
+          details: "Bus/taxi d'Outlet 212 à Mahmutbey (M7), M7 à Mecidiyeköy, puis M2 à Taksim.",
+          durationMin: 60
+        }
+      }
+    ]
+  },
+  {
+    day: 8,
+    date: "Mon 10 Nov",
+    name: "Beshiktach + Galata port + museum",
+    plan: [
+      { placeId: HOTEL_LOCATION.id, activity: "Journée libre à Istanbul", html: "Profitez de cette journée pour vous détendre ou explorer à votre guise." }
+    ,
+      {
+        placeId: "sak_han",
+        activity: "Visite de Sak Han pour cadeaux et accessoires (Süleymaniye)",
+        durationHrs: 3.0,
+        travelTo: {
+          mode: "Métro M2 + Tram T1",
+          details: "M2 de Taksim à Vezneciler, puis marche courte vers Süleymaniye et Sak Han.",
+          durationMin: 25
+        }
+      },
+      {
+        placeId: "illusion_museum",
+        activity: "Exploration du Musée des Illusions (Taksim)",
+        durationHrs: 2.0,
+        travelTo: {
+          mode: "Tram T1 + Métro M2",
+          details: "T1 de Vezneciler à Kabataş ou Eminönü, puis M2 (si applicable) ou remonter vers Taksim.",
+          durationMin: 25
+        }
+      },
+      {
+        placeId: "taksim_square",
+        activity: "Retour à l'hôtel (Taksim)",
+        travelTo: {
+          mode: "Marche",
+          details: "Le Musée des Illusions est dans la zone de Taksim, donc une courte marche.",
+          durationMin: 5
+        }
+      }
+    ]
+  },
+  {
+    day: 9,
+    date: "Tue 11 Nov",
+    name: "Olivium + Zeruj Port AVM",
+    plan: [
+      { placeId: HOTEL_LOCATION.id, activity: "Journée libre à Istanbul", html: "Profitez de cette journée pour vous détendre ou explorer à votre guise." }
+   ,
+      {
+        placeId: "olivium_outlet",
+        activity: "Shopping toute la journée à l'Olivium Outlet",
+        durationHrs: 6.0,
+        travelTo: {
+          mode: "Métro M2 + Métro M1A",
+          details: "M2 de Taksim à Yenikapı, puis M1A à Zeytinburnu (Navette gratuite du centre commercial disponible).",
+          durationMin: 40
+        }
+      },
+      {
+        placeId: "taksim_square",
+        activity: "Retour à l'hôtel (Taksim)",
+        travelTo: {
+          mode: "Métro M1A + Métro M2",
+          details: "M1A de Zeytinburnu à Yenikapı, puis M2 à Taksim.",
+          durationMin: 40
+        }
+      }
+    ]
+  },
+  {
+    day: 10,
+    date: "Wed 12 Nov",
+    name: "Emaar Mall",
+    plan: [
+      { placeId: HOTEL_LOCATION.id, activity: "Journée libre à Istanbul", html: "Profitez de cette journée pour vous détendre ou explorer à votre guise." }
+    ,
+      {
+        placeId: "emaar_mall",
+        activity: "Shopping toute la journée au Centre Commercial Emaar",
+        durationHrs: 6.0,
+        travelTo: {
+          mode: "Funiculaire F1 + Ferry + Métro M4",
+          details: "F1 de Taksim à Kabataş, Ferry vers Kadıköy, puis M4 de Kadıköy à Ünalan (Emaar Mall est connecté).",
+          durationMin: 55
+        }
+      },
+      {
+        placeId: "taksim_square",
+        activity: "Retour à l'hôtel (Taksim)",
+        travelTo: {
+          mode: "Métro M4 + Ferry + Funiculaire F1",
+          details: "M4 d'Ünalan à Kadıköy, Ferry vers Kabataş, puis F1 à Taksim.",
+          durationMin: 55
+        }
+      }
+    ]
+  },
+  {
+    day: 11,
+    date: "Thu 13 Nov",
+    name: "Vadistanbul Mall/ Libre",
+    plan: [
+      { placeId: HOTEL_LOCATION.id, activity: "Journée libre à Istanbul", html: "Profitez de cette journée pour vous détendre ou explorer à votre guise." }
+    ,
+      {
+        placeId: "vadis", // Vadistanbul Mall
+        activity: "Shopping toute la journée au Vadistanbul Mall/ Libre",
+        durationHrs: 6.0,
+        travelTo: {
+          mode: "Métro M2 + Funiculaire F3",
+          details: "M2 de Taksim à Seyrantepe, puis Funiculaire F3 direct vers Vadistanbul.",
+          durationMin: 35
+        }
+      },
+      {
+        placeId: "taksim_square",
+        activity: "Retour à l'hôtel (Taksim)",
+        travelTo: {
+          mode: "Funiculaire F3 + Métro M2",
+          details: "F3 de Vadistanbul à Seyrantepe, puis M2 à Taksim.",
+          durationMin: 35
+        }
+      }
+    ]
+  },
+  {
+    day: 12,
+    date: "Fri 14 Nov",
+    name: "Journée Libre",
+    plan: [
+      { placeId: HOTEL_LOCATION.id, activity: "Going Home",  html: "Temps libre avant le départ de l'aéroport. De Taksim, le bus Havaist est une option directe pour les aéroports IST et SAW." }
+    ]
+  }
 ];
-
 
 export default function MapView() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -468,7 +730,7 @@ export default function MapView() {
           boxShadow: sidebarOpen ? "2px 0 10px rgba(0,0,0,0.3)" : "none",
         }}
       >
-        <h2 style={{ fontSize: "18px", marginBottom: "15px" }}>🗺️ Travel Planner</h2>
+        <h2 style={{ fontSize: "18px", marginBottom: "15px" }}>🗺️ Plan des jours</h2>
         <h3 style={{ fontSize: "16px", marginBottom: "10px", color: "#eee" }}>Itinerary</h3>
         {itineraries.map((dayPlan) => (
           <button
